@@ -8,16 +8,25 @@ export class ImageGallery extends Component {
   state = {
     picture: null,
     loading: false,
+    page: 1,
   };
 
   async componentDidUpdate(prevProps, prevState) {
     try {
-      if (this.props.pictureSearch !== prevProps.pictureSearch) {
-        console.log('прос изменился');
+      if (
+        this.props.pictureSearch !== prevProps.pictureSearch ||
+        this.state.page !== prevState.page
+      ) {
+        console.log(prevState.page, 'предидущяя страниц');
+        console.log(this.state.page, 'текущяя страница');
+        console.log('пропс изменился');
         console.log(this.props.pictureSearch, 'текущий пропс');
         console.log(prevProps.pictureSearch, 'предидущий пропс');
         this.setState({ loading: true });
-        const res = await fecthServerApi(this.props.pictureSearch);
+        const res = await fecthServerApi(
+          this.props.pictureSearch,
+          this.state.page
+        );
         console.log(res.hits);
         this.setState({
           picture: res.hits,
@@ -29,6 +38,14 @@ export class ImageGallery extends Component {
     }
   }
 
+  loadMoreButton = () => {
+    this.setState(prevState => {
+      return {
+        page: prevState.page + 1,
+      };
+    });
+  };
+
   render() {
     return (
       <>
@@ -39,6 +56,9 @@ export class ImageGallery extends Component {
           {this.state.picture !== null && (
             <ImageGalleryItem picture={this.state.picture} />
           )}
+          <button onClick={this.loadMoreButton} className="galleryButton">
+            Load More
+          </button>
         </ul>
       </>
     );
