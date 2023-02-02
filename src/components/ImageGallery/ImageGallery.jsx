@@ -3,6 +3,7 @@ import { Loader } from 'components/Loader/Loader';
 import { Component } from 'react';
 import css from '../ImageGallery/imageGalleryStyle.module.css';
 import { fecthServerApi } from 'apiService/apiServise';
+import { Button } from 'components/Button/Button';
 
 export class ImageGallery extends Component {
   state = {
@@ -56,9 +57,7 @@ export class ImageGallery extends Component {
           {this.state.picture !== null && (
             <ImageGalleryItem picture={this.state.picture} />
           )}
-          <button onClick={this.loadMoreButton} className="galleryButton">
-            Load More
-          </button>
+          <Button loadMore={this.loadMoreButton} />
         </ul>
       </>
     );
