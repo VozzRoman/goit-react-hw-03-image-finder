@@ -16,7 +16,7 @@ export class ImageGalleryItem extends Component {
         .then(res => res.json())
         .then(picture => {
           return this.setState({
-            picture,
+            picture: picture.hits,
           })
         });
     }
