@@ -57,8 +57,10 @@ export class ImageGallery extends Component {
           {this.state.picture !== null && (
             <ImageGalleryItem picture={this.state.picture} />
           )}
-          <Button loadMore={this.loadMoreButton} />
         </ul>
+        {this.state.picture !== null && (
+          <Button loadMore={this.loadMoreButton} />
+        )}
       </>
     );
   }
