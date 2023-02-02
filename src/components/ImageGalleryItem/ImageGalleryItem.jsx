@@ -14,14 +14,18 @@ export class ImageGalleryItem extends Component {
         `https://pixabay.com/api/?q=${this.props.pictureSearch}&page=1&key=31129543-53dedf11cf0639b43ae86da60&image_type=photo&orientation=horizontal&per_page=12`
       )
         .then(res => res.json())
-        .then(picture => console.log(picture.hits));
+        .then(picture => {
+          return this.setState({
+            picture,
+          })
+        });
     }
   }
   render() {
     return (
       <div>
         <h2>ImageInfo</h2>
-        {/* {this.state.picture && <div>{this.state.picture}</div>} */}
+        <div>{console.log(this.state.picture)}</div>
       </div>
     );
   }
