@@ -7,7 +7,7 @@ import { Button } from 'components/Button/Button';
 
 export class ImageGallery extends Component {
   state = {
-    picture: null,
+    picture: [],
     loading: false,
     page: 1,
   };
@@ -29,15 +29,18 @@ export class ImageGallery extends Component {
           this.state.page
         );
         console.log(res.hits);
-        this.setState({
-          picture: res.hits,
-        });
+        this.setState(prevState => ({
+          picture: [...prevState.picture, ...res.hits],
+        }));
+
         this.setState({ loading: false });
       }
     } catch (error) {
       console.log(error);
     }
   }
+
+  loadPicture = () => {};
 
   loadMoreButton = () => {
     this.setState(prevState => {
