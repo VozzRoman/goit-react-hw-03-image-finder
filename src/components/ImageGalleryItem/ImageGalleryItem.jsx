@@ -1,17 +1,14 @@
-
-
-export const ImageGalleryItem = ({picture}) => {
+export const ImageGalleryItem = ({ picture }) => {
   return (
     <>
       {picture.map(el => {
         return (
           <li key={el.id} className="gallary__item">
-            <img src={el.userImageURL} alt="" />
-            {/* <a href={el.userImageURL} className="gallaty__link"></a> */}
+            <img src={el.webformatURL} alt="" />
+            {/* <a href={el.largeImageURL} className="gallaty__link"></a> */}
           </li>
-        )
+        );
       })}
-    
     </>
-)
-}
+  );
+};
