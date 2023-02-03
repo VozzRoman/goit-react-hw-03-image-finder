@@ -7,7 +7,7 @@ export const ImageGalleryItem = ({ picture, toShowModal }) => {
             <img
               src={el.webformatURL}
               alt=""
-              onClick={() => toShowModal(el.largeImageURL)}
+              onClick={() => toShowModal(el.largeImageURL, el.tags)}
             />
           </li>
         );

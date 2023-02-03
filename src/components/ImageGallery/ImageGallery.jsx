@@ -13,6 +13,8 @@ export class ImageGallery extends Component {
     page: 1,
     modalVisible: false,
     image: '',
+    tags: '',
+    error: null,
   };
 
   async componentDidUpdate(prevProps, prevState) {
@@ -39,7 +41,10 @@ export class ImageGallery extends Component {
         this.setState({ loading: false });
       }
     } catch (error) {
-      console.log(error);
+      console.log('App fetch is not working');
+      this.setState({
+        error,
+      });
     }
   }
 
@@ -51,11 +56,12 @@ export class ImageGallery extends Component {
     });
   };
 
-  showModal = image => {
+  showModal = (image, tags) => {
     this.setState(prevState => {
       return {
         modalVisible: !prevState.modalVisible,
         image,
+        tags,
       };
     });
   };
@@ -78,7 +84,11 @@ export class ImageGallery extends Component {
           <Button loadMore={this.loadMoreButton} />
         )}
         {this.state.modalVisible && (
-          <Modal img={this.state.image} closeModal={this.showModal} />
+          <Modal
+            img={this.state.image}
+            tags={this.state.tags}
+            closeModal={this.showModal}
+          />
         )}
       </>
     );

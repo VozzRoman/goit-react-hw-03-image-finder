@@ -17,12 +17,20 @@ export class Modal extends Component {
     }
   };
 
+  handleBackDrop = e => {
+    console.log(e.currentTarget);
+    console.log(e.target);
+    if (e.currentTarget === e.target) {
+      this.props.closeModal();
+    }
+  };
+
   render() {
-    const { img } = this.props;
+    const { img, tags } = this.props;
     return (
-      <div className={css.Overlay}>
+      <div className={css.Overlay} onClick={this.handleBackDrop}>
         <div className={css.Modal}>
-          <img src={img} alt="" />
+          <img src={img} alt={tags} />
         </div>
       </div>
     );
