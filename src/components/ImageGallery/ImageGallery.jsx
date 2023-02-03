@@ -16,7 +16,6 @@ export class ImageGallery extends Component {
   };
 
   async componentDidUpdate(prevProps, prevState) {
-    
     try {
       if (
         this.props.pictureSearch !== prevProps.pictureSearch ||
@@ -38,14 +37,11 @@ export class ImageGallery extends Component {
         }));
 
         this.setState({ loading: false });
-        
       }
     } catch (error) {
       console.log(error);
     }
   }
-
-
 
   loadMoreButton = () => {
     this.setState(prevState => {
@@ -56,9 +52,11 @@ export class ImageGallery extends Component {
   };
 
   showModal = image => {
-    this.setState({
-      modalVisible: true,
-      image,
+    this.setState(prevState => {
+      return {
+        modalVisible: !prevState.modalVisible,
+        image,
+      };
     });
   };
 
@@ -79,7 +77,9 @@ export class ImageGallery extends Component {
         {this.state.picture.length !== 0 && (
           <Button loadMore={this.loadMoreButton} />
         )}
-        {this.state.modalVisible && <Modal img={this.state.image} />}
+        {this.state.modalVisible && (
+          <Modal img={this.state.image} closeModal={this.showModal} />
+        )}
       </>
     );
   }
