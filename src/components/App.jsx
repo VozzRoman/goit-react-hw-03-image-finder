@@ -13,6 +13,7 @@ export class App extends Component {
     this.setState({ pictureSearch: serchPicture });
     console.log(this.state.pictureSearch);
   };
+
   render() {
     return (
       <>

@@ -4,12 +4,15 @@ import { Component } from 'react';
 import css from '../ImageGallery/imageGalleryStyle.module.css';
 import { fecthServerApi } from 'apiService/apiServise';
 import { Button } from 'components/Button/Button';
+import { Modal } from 'components/Modal/Modal';
 
 export class ImageGallery extends Component {
   state = {
     picture: [],
     loading: false,
     page: 1,
+    modalVisible: false,
+    image: '',
   };
 
   async componentDidUpdate(prevProps, prevState) {
@@ -48,6 +51,13 @@ export class ImageGallery extends Component {
     });
   };
 
+  showModal = image => {
+    this.setState({
+      modalVisible: true,
+      image,
+    });
+  };
+
   render() {
     return (
       <>
@@ -56,12 +66,16 @@ export class ImageGallery extends Component {
         <ul className={css.ImageGallery}>
           {this.state.loading && <Loader />}
           {this.state.picture !== null && (
-            <ImageGalleryItem picture={this.state.picture} />
+            <ImageGalleryItem
+              picture={this.state.picture}
+              toShowModal={this.showModal}
+            />
           )}
         </ul>
         {this.state.picture.length !== 0 && (
           <Button loadMore={this.loadMoreButton} />
         )}
+        {this.state.modalVisible && <Modal img={this.state.image} />}
       </>
     );
   }

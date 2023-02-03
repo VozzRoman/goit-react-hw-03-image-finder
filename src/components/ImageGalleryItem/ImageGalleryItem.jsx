@@ -1,11 +1,14 @@
-export const ImageGalleryItem = ({ picture }) => {
+export const ImageGalleryItem = ({ picture, toShowModal }) => {
   return (
     <>
       {picture.map(el => {
         return (
           <li key={el.id} className="gallary__item">
-            <img src={el.webformatURL} alt="" />
-            {/* <a href={el.largeImageURL} className="gallaty__link"></a> */}
+            <img
+              src={el.webformatURL}
+              alt=""
+              onClick={() => toShowModal(el.largeImageURL)}
+            />
           </li>
         );
       })}
