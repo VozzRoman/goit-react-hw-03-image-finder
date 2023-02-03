@@ -28,11 +28,11 @@ export class ImageGallery extends Component {
         console.log('пропс изменился');
         console.log(this.props.pictureSearch, 'текущий пропс');
         console.log(prevProps.pictureSearch, 'предидущий пропс');
-         this.setState({
+        this.setState({
           picture: [],
-        })
+        });
         this.setState({ loading: true });
-       
+
         const res = await fecthServerApi(
           this.props.pictureSearch,
           this.state.page
@@ -41,7 +41,6 @@ export class ImageGallery extends Component {
         console.log(res.hits);
         this.setState(prevState => ({
           picture: [...prevState.picture, ...res.hits],
-
         }));
 
         this.setState({ loading: false });
