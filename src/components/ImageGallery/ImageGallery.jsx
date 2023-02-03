@@ -40,8 +40,6 @@ export class ImageGallery extends Component {
     }
   }
 
-  loadPicture = () => {};
-
   loadMoreButton = () => {
     this.setState(prevState => {
       return {
@@ -61,7 +59,7 @@ export class ImageGallery extends Component {
             <ImageGalleryItem picture={this.state.picture} />
           )}
         </ul>
-        {this.state.picture !== null && (
+        {this.state.picture.length !== 0 && (
           <Button loadMore={this.loadMoreButton} />
         )}
       </>
