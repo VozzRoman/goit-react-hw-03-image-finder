@@ -3,7 +3,7 @@ export const ImageGalleryItem = ({ picture }) => {
     <>
       {picture.map(el => {
         return (
-          <li key={el.id} className="gallary__item">
+          <li className="gallary__item">
             <img src={el.webformatURL} alt="" />
             {/* <a href={el.largeImageURL} className="gallaty__link"></a> */}
           </li>
