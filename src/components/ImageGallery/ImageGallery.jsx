@@ -33,6 +33,7 @@ export class ImageGallery extends Component {
           this.props.pictureSearch,
           this.state.page
         );
+
         console.log(res.hits);
         this.setState(prevState => ({
           picture: [...prevState.picture, ...res.hits],

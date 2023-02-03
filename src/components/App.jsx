@@ -7,18 +7,15 @@ export class App extends Component {
   state = {
     pictureSearch: '',
     page: 1,
-    
-    
-
+    pictures: [],
   };
 
   handleFormSubmit = serchPicture => {
     console.log(serchPicture);
     this.setState({
       pictureSearch: serchPicture,
-      page: 1,
+      pictures: [],
     });
-
 
     console.log(this.state.pictureSearch);
   };
