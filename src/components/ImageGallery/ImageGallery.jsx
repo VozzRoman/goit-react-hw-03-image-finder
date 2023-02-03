@@ -16,6 +16,7 @@ export class ImageGallery extends Component {
   };
 
   async componentDidUpdate(prevProps, prevState) {
+    
     try {
       if (
         this.props.pictureSearch !== prevProps.pictureSearch ||
@@ -37,11 +38,14 @@ export class ImageGallery extends Component {
         }));
 
         this.setState({ loading: false });
+        
       }
     } catch (error) {
       console.log(error);
     }
   }
+
+
 
   loadMoreButton = () => {
     this.setState(prevState => {

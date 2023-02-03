@@ -8,8 +8,10 @@ export class Searchbar extends Component {
   };
 
   handleOnCange = e => {
+     const {name, value} = e.currentTarget
     this.setState({
-      search: e.currentTarget.value.toLowerCase(),
+    [name]: value
+      // search: e.currentTarget.value.toLowerCase(),
     });
   };
 

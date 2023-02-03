@@ -6,11 +6,20 @@ import { Searchbar } from './Searchbar/Searchbar';
 export class App extends Component {
   state = {
     pictureSearch: '',
+    page: 1,
+    
+    
+
   };
 
   handleFormSubmit = serchPicture => {
     console.log(serchPicture);
-    this.setState({ pictureSearch: serchPicture });
+    this.setState({
+      pictureSearch: serchPicture,
+      page: 1,
+    });
+
+
     console.log(this.state.pictureSearch);
   };
 
